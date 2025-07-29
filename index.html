@@ -205,58 +205,6 @@
     </style>
 </head>
 <body class="relative bg-black text-white min-h-screen overflow-hidden">
-    <!-- Animated Background Grid -->
-    <div class="absolute inset-0 z-0 image-grid">
-        <div class="gradient-overlay absolute inset-0 z-10"></div>
-        <div class="grid grid-cols-4 gap-2 sm:gap-4 p-2 sm:p-4 opacity-40 pointer-events-none h-full">
-            <!-- Column 1 -->
-            <div class="space-y-2 sm:space-y-4 col-up">
-                <img src="static\img1.jpg" 
-                     class="w-full h-48 sm:h-64 object-cover rounded-lg shadow-lg" alt="Portrait Photography" />
-                <img src="static\img2.jpg" 
-                     class="w-full h-32 sm:h-48 object-cover rounded-lg shadow-lg" alt="Nature Photography" />
-                <img src="static\img3.jpg" 
-                     class="w-full h-40 sm:h-56 object-cover rounded-lg shadow-lg" alt="Wedding Photography" />
-            </div>
-            <!-- Column 2 -->
-            <div class="space-y-2 sm:space-y-4 col-down">
-                <img src="static\img4.jpg" 
-                     class="w-full h-40 sm:h-56 object-cover rounded-lg shadow-lg" alt="Street Photography" />
-                <img src="static\img5.jpg" 
-                     class="w-full h-48 sm:h-64 object-cover rounded-lg shadow-lg" alt="Fashion Photography" />
-                <img src="static\img6.jpg" 
-                     class="w-full h-36 sm:h-48 object-cover rounded-lg shadow-lg" alt="Landscape Photography" />
-            </div>
-            <!-- Column 3 -->
-            <div class="space-y-2 sm:space-y-4 col-diagonal">
-                <img src="static\img1.jpg" 
-                     class="w-full h-44 sm:h-60 object-cover rounded-lg shadow-lg" alt="Professional Headshots" />
-                <img src="static\img3.jpg" 
-                     class="w-full h-32 sm:h-44 object-cover rounded-lg shadow-lg" alt="Business Photography" />
-                <img src="static\img6.jpg" 
-                     class="w-full h-48 sm:h-64 object-cover rounded-lg shadow-lg" alt="Event Photography" />
-            </div>
-            <!-- Column 4 -->
-            <div class="space-y-2 sm:space-y-4 col-up">
-                <img src="static\img2.jpg" 
-                     class="w-full h-36 sm:h-52 object-cover rounded-lg shadow-lg" alt="Creative Portraits" />
-                <img src="static\img4.jpg" 
-                     class="w-full h-44 sm:h-60 object-cover rounded-lg shadow-lg" alt="Architectural Photography" />
-                <img src="static\img5.jpg" 
-                     class="w-full h-40 sm:h-56 object-cover rounded-lg shadow-lg" alt="Lifestyle Photography" />
-            </div>
-        </div>
-    </div>
-
-    <!-- Floating Particles -->
-    <div class="absolute inset-0 z-5 pointer-events-none">
-        <div class="particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
-        <div class="particle" style="left: 20%; top: 60%; animation-delay: 1s;"></div>
-        <div class="particle" style="left: 70%; top: 30%; animation-delay: 2s;"></div>
-        <div class="particle" style="left: 80%; top: 70%; animation-delay: 3s;"></div>
-        <div class="particle" style="left: 50%; top: 10%; animation-delay: 4s;"></div>
-        <div class="particle" style="left: 30%; top: 80%; animation-delay: 5s;"></div>
-    </div>
 
     <!-- Foreground Content -->
     <div class="relative z-20 flex flex-col min-h-screen">
@@ -354,27 +302,5 @@
         </footer>
     </div>
 
-    <script>
-        // Add some interactive particles on mouse move
-        document.addEventListener('mousemove', (e) => {
-            if (Math.random() < 0.1) { // Only create particles occasionally
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = e.clientX + 'px';
-                particle.style.top = e.clientY + 'px';
-                particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                document.body.appendChild(particle);
-                
-                setTimeout(() => {
-                    particle.remove();
-                }, 6000);
-            }
-        });
-
-        // Add smooth scrolling and page load animations
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '1';
-        });
-    </script>
 </body>
 </html>
