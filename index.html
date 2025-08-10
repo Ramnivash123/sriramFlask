@@ -1,104 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Home</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T.K.SRIRAM Photography - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animated background pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.02) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(255,255,255,0.03) 0%, transparent 50%);
+      animation: backgroundFloat 20s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes backgroundFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(1deg); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1rem 0;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #ffffff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+      color: #cccccc;
+      transform: scale(1.02);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 1rem;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a:hover {
+      color: #cccccc;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #ffffff;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Grid Background Layer */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      z-index: 0;
+    }
+
+    .hero-grid div {
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Overlay */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+      z-index: 1;
+    }
+
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.7);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      line-height: 1.1;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #e0e0e0;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 1rem 2.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: #ffffff;
+      color: #000000;
+      box-shadow: 0 8px 30px rgba(255,255,255,0.2);
+    }
+
+    .btn-primary:hover {
+      background: #f0f0f0;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(255,255,255,0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 2px solid #ffffff;
+    }
+
+    .btn-secondary:hover {
+      background: #ffffff;
+      color: #000000;
+      transform: translateY(-2px);
+    }
+
+  </style>
 </head>
 
-<body class="relative bg-[#0a0f2c] text-white min-h-screen font-['Dancing_Script']">
-  
-  <!-- Foreground Content -->
-  <div class="relative z-10 flex flex-col min-h-screen">
-
-    <!-- Navbar -->
-    <nav class="w-full px-6 py-4 border-b border-white/10 bg-[#0a0f2c]/90 backdrop-blur-md">
-      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-        <div class="text-3xl font-bold tracking-widest hover:text-gray-300 transition">
-          T.K.SRIRAM PHOTOGRAPHY
-        </div>
-        <div class="text-lg flex flex-col md:flex-row items-center gap-2 md:gap-6">
-          <a href="/" class="hover:text-gray-300 transition">Home</a>
-          <a href="#" class="hover:text-gray-300 transition">Portfolio</a>
-          <a href="#" class="hover:text-gray-300 transition">About Me</a>
-        </div>
+<body>
+  <div class="container">
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-content">
+        <a href="/" class="logo">T.K.SRIRAM PHOTOGRAPHY</a>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="#service">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="flex-grow flex items-center justify-center px-6 py-20">
-      <div class="text-center max-w-3xl mx-auto">
-        <h1 class="text-5xl sm:text-6xl font-extrabold mb-6 text-white">
-          Welcome Photophiles
-        </h1>
-        <p class="text-lg mb-10 text-gray-300 leading-relaxed">
-          Dive into a world where every frame tells a story. Whether you're a nature enthusiast, a portrait lover, or a street photography fan, you're in the right place.
-        </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button onclick="window.location.href='/signup'" class="px-6 py-3 bg-white text-[#0a0f2c] font-semibold rounded-lg shadow hover:bg-gray-200 transition">
-            Signup
-          </button>
-          <button onclick="window.location.href='/signin'" class="px-6 py-3 border border-white text-white font-semibold rounded-lg hover:bg-white hover:text-[#0a0f2c] transition">
-            Signin
-          </button>
-        </div>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div style="background-image: url('https://picsum.photos/id/1011/800/600');"></div>
+        <div style="background-image: url('https://picsum.photos/id/1015/800/600');"></div>
+        <div style="background-image: url('https://picsum.photos/id/1024/800/600');"></div>
+        <div style="background-image: url('https://picsum.photos/id/1035/800/600');"></div>
+        <div style="background-image: url('https://picsum.photos/id/1043/800/600');"></div>
+        <div style="background-image: url('https://picsum.photos/id/1050/800/600');"></div>
       </div>
-    </div>
-
-    <!-- Services Section -->
-    <section class="px-6 py-20 bg-[#10173c] text-center border-t border-white/10">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold mb-12 text-white">My Services</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="p-6 rounded-lg bg-white text-[#0a0f2c] font-semibold shadow-md">
-            Wedding Photography
-          </div>
-          <div class="p-6 rounded-lg border border-white text-white font-semibold shadow-md hover:bg-white hover:text-[#0a0f2c] transition">
-            Nature & Landscape Shoots
-          </div>
-          <div class="p-6 rounded-lg bg-white text-[#0a0f2c] font-semibold shadow-md">
-            Portrait & Fashion Photography
-          </div>
+      <div class="hero-content">
+        <h1>Welcome Photophiles</h1>
+        <p>Dive into a world where every frame tells a story. Whether you're a nature enthusiast, a portrait lover, or a street photography fan, you're in the right place.</p>
+        <div class="cta-buttons">
+          <a href="/signup" class="btn btn-primary">Sign Up</a>
+          <a href="/signin" class="btn btn-secondary">Sign In</a>
         </div>
       </div>
     </section>
-
-    <!-- Image Gallery with Backgrounds -->
-    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-8 bg-[#121826]">
-      <div class="h-64 rounded-lg shadow-md bg-cover bg-center hover:scale-105 transition" style="background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=60');"></div>
-      <div class="h-64 rounded-lg shadow-md bg-cover bg-center hover:scale-105 transition" style="background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=60');"></div>
-      <div class="h-64 rounded-lg shadow-md bg-cover bg-center hover:scale-105 transition" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=60');"></div>
-      <div class="h-64 rounded-lg shadow-md bg-cover bg-center hover:scale-105 transition" style="background-image: url('https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=800&q=60');"></div>
-      <div class="h-64 rounded-lg shadow-md bg-cover bg-center hover:scale-105 transition" style="background-image: url('https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=60');"></div>
-      <div class="h-64 rounded-lg shadow-md bg-cover bg-center hover:scale-105 transition" style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=60');"></div>
-    </section>
-
-
-    <!-- Footer -->
-    <footer class="px-6 py-14 bg-[#0a0f2c] border-t border-white/10 text-sm">
-      <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 text-center md:text-left">
-        <div>
-          <h3 class="text-lg font-bold mb-2 text-white">Contact</h3>
-          <p class="text-gray-300">Email: contact@tksriramphoto.com</p>
-          <p class="text-gray-300">Phone: +91 98765 43210</p>
-        </div>
-        <div>
-          <h3 class="text-lg font-bold mb-2 text-white">Quick Links</h3>
-          <ul class="space-y-1">
-            <li><a href="/" class="hover:text-gray-300 transition">Home</a></li>
-            <li><a href="#" class="hover:text-gray-300 transition">Portfolio</a></li>
-            <li><a href="#" class="hover:text-gray-300 transition">Book a Shoot</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-lg font-bold mb-2 text-white">Follow Me</h3>
-          <p class="text-gray-300">Instagram | Facebook | Twitter</p>
-        </div>
-      </div>
-    </footer>
 
   </div>
-</body>
 
+  <script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.style.background = 'rgba(0, 0, 0, 0.98)';
+        navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.2)';
+      } else {
+        navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+        navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+      }
+    });
+
+  </script>
+</body>
 </html>
