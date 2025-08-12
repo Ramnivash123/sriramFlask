@@ -1,488 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>T.K.SRIRAM Photography - Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>T.K.SRIRAM Photography - Home</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #ffffff;
-            background-color: #000000;
-            overflow-x: hidden;
-        }
+<style>
+:root {
+  --primary: #fff;
+  --secondary: #000;
+  --grey-light: #ccc;
+  --grey-dark: #222;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+body {
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--secondary);
+  color: var(--primary);
+  scroll-behavior: smooth;
+}
 
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            border-bottom: 1px solid #333;
-            transition: all 0.3s ease;
-        }
+/* Navbar */
+.navbar {
+  background: var(--secondary);
+  padding: 14px 25px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--grey-dark);
+  transition: all 0.3s ease;
+}
+.navbar.scrolled {
+  padding: 6px 25px;
+  background: #111;
+  border-bottom: 1px solid #444;
+}
 
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ffffff;
-            text-decoration: none;
-            letter-spacing: 2px;
-            transition: color 0.3s ease;
-        }
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--primary);
+  text-decoration: none;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo:hover {
+  color: var(--grey-light);
+}
 
-        .logo:hover {
-            color: #cccccc;
-        }
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+.nav-links a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+.nav-links a:hover {
+  background: var(--grey-dark);
+}
 
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
 
-        .nav-links a:hover {
-            color: #cccccc;
-        }
+.btn {
+  padding: 8px 16px;
+  background: var(--primary);
+  color: var(--secondary);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 20px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.btn:hover {
+  background: var(--grey-light);
+  transform: translateY(-2px);
+}
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #ffffff;
-            transition: width 0.3s ease;
-        }
+/* Hero section */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 30px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.hero-content {
+  max-width: 420px;
+}
+.hero-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: var(--primary);
+}
+.hero-content p {
+  color: var(--grey-light);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+.hero-grid {
+  width: 400px;
+  height: 640px;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--grey-dark);
+}
+.scroll-track {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 200px;
+  gap: 10px;
+  animation: scrollY 15s linear infinite;
+}
+.tile {
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  filter: grayscale(100%);
+}
+.tile:hover {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+@keyframes scrollY {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-660px); }
+}
 
-        .nav-buttons {
-            display: flex;
-            gap: 1rem;
-        }
+/* Services */
+.services {
+  padding: 50px 20px;
+  background: var(--grey-dark);
+}
+.services h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: 'Playfair Display', serif;
+}
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+.service-card {
+  background: var(--secondary);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid var(--grey-dark);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(255,255,255,0.05);
+}
+.service-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  filter: grayscale(100%);
+}
+.service-card:hover img {
+  filter: grayscale(0%);
+}
+.service-card h3 {
+  margin-top: 8px;
+}
+.service-card p {
+  color: var(--grey-light);
+}
 
-        .btn {
-            padding: 0.5rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            cursor: pointer;
-            display: inline-block;
-        }
+/* Contact */
+.contact-section {
+  padding: 50px 20px;
+}
+.contact-section h2 {
+  font-family: 'Playfair Display', serif;
+}
+.contact-info p {
+  margin: 8px 0;
+  color: var(--grey-light);
+}
+.contact-info a {
+  color: var(--primary);
+  text-decoration: none;
+}
+.contact-form {
+  display: grid;
+  gap: 12px;
+  max-width: 400px;
+  margin-top: 20px;
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 12px;
+  border: 1px solid var(--grey-dark);
+  border-radius: 6px;
+  background: var(--secondary);
+  color: var(--primary);
+}
+.contact-form button {
+  background: var(--primary);
+  color: var(--secondary);
+  font-weight: 600;
+  border-radius: 25px;
+  padding: 10px;
+}
+.contact-form button:hover {
+  background: var(--grey-light);
+}
 
-        .btn-primary {
-            background-color: #ffffff;
-            color: #000000;
-            border-color: #ffffff;
-        }
-
-        .btn-primary:hover {
-            background-color: transparent;
-            color: #ffffff;
-            border-color: #ffffff;
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: #ffffff;
-            border-color: #ffffff;
-        }
-
-        .btn-secondary:hover {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .hero-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            opacity: 0.3;
-            filter: grayscale(100%);
-        }
-
-        .hero-grid > div {
-            background-size: cover;
-            background-position: center;
-            transition: all 0.5s ease;
-        }
-
-        .hero-grid > div:hover {
-            opacity: 0.6;
-            transform: scale(1.05);
-        }
-
-        .hero-content {
-            text-align: center;
-            z-index: 10;
-            max-width: 600px;
-            padding: 2rem;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            border: 1px solid #333;
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
-            letter-spacing: 3px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            color: #cccccc;
-            line-height: 1.8;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Services Section */
-        .services {
-            padding: 5rem 0;
-            background-color: #111111;
-        }
-
-        .services h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .service-card {
-            background-color: #000000;
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid #333;
-            position: relative;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: #666;
-            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
-        }
-
-        .service-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            filter: grayscale(100%);
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover img {
-            filter: grayscale(0%);
-            opacity: 0.8;
-        }
-
-        .service-card h3 {
-            padding: 1.5rem 1.5rem 1rem;
-            font-size: 1.5rem;
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
-
-        .service-card p {
-            padding: 0 1.5rem 1.5rem;
-            color: #cccccc;
-            line-height: 1.6;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            padding: 5rem 0;
-            background-color: #000000;
-        }
-
-        .contact-section h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-
-        .contact-section > p {
-            text-align: center;
-            color: #cccccc;
-            margin-bottom: 3rem;
-            font-size: 1.2rem;
-        }
-
-        .contact-info {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .contact-info p {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-info a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-info a:hover {
-            color: #cccccc;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            padding: 1rem;
-            border: 2px solid #333;
-            background-color: #111111;
-            color: #ffffff;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: #666;
-            background-color: #222222;
-        }
-
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
-            color: #777;
-        }
-
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .contact-form .btn {
-            align-self: flex-start;
-            font-size: 1rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-
-            .nav-buttons {
-                justify-content: center;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .hero-grid {
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(3, 1fr);
-            }
-
-            .services h2,
-            .contact-section h2 {
-                font-size: 2rem;
-            }
-
-            .service-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Loading animation for images */
-        .service-card img {
-            opacity: 0;
-            animation: fadeIn 0.5s ease-in-out forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-  </style>
+/* Responsive */
+@media (max-width: 480px) {
+  .hero-content h1 { font-size: 1.5rem; }
+}
+</style>
 </head>
-
 <body>
-  <div class="container">
-    <!-- Navigation -->
-    <nav class="navbar">
-      <div class="nav-content">
-        <a href="/" class="logo">T.K.SRIRAM PHOTOGRAPHY</a>
-        <ul class="nav-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="#service">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="nav-buttons">
-          <a href="/signup" class="btn btn-primary">Sign Up</a>
-          <a href="/signin" class="btn btn-secondary">Sign In</a>
-        </div>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-content">
+      <a href="/" class="logo"><i class="fas fa-camera-retro"></i> T.K.SRIRAM PHOTOGRAPHY</a>
+      <ul class="nav-links">
+        <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#service"><i class="fas fa-briefcase"></i> Services</a></li>
+        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+      </ul>
+      <div class="nav-buttons">
+        <a href="/signup" class="btn"><i class="fas fa-user-plus"></i> Sign Up</a>
+        <a href="/signin" class="btn"><i class="fas fa-sign-in-alt"></i> Sign In</a>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-grid">
-        <div style="background-image: url('https://picsum.photos/id/1011/800/600');"></div>
-        <div style="background-image: url('https://picsum.photos/id/1015/800/600');"></div>
-        <div style="background-image: url('https://picsum.photos/id/1024/800/600');"></div>
-        <div style="background-image: url('https://picsum.photos/id/1035/800/600');"></div>
-        <div style="background-image: url('https://picsum.photos/id/1043/800/600');"></div>
-        <div style="background-image: url('https://picsum.photos/id/1050/800/600');"></div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1><i class="fas fa-camera"></i> Welcome Photophiles</h1>
+      <p>Dive into a world where every frame tells a story. From breathtaking landscapes to intimate portraits, I capture emotions in their purest form.</p>
+    </div>
+    <div class="hero-grid">
+      <div class="scroll-track">
+        <div class="tile" style="background-image:url('https://picsum.photos/id/1011/800/600')"></div>
+        <div class="tile" style="background-image:url('https://picsum.photos/id/1015/800/600')"></div>
+        <div class="tile" style="background-image:url('https://picsum.photos/id/1024/800/600')"></div>
+        <div class="tile" style="background-image:url('https://picsum.photos/id/1035/800/600')"></div>
+        <div class="tile" style="background-image:url('https://picsum.photos/id/1043/800/600')"></div>
+        <div class="tile" style="background-image:url('https://picsum.photos/id/1050/800/600')"></div>
+        <!-- duplicate for loop -->
+        <div class="tile" style="background-image:url('https://picsum.photos/id/1011/800/600')"></div>
+        <div class="tile" style="background-image:url('https://picsum.photos/id/1015/800/600')"></div>
+        <div class="tile" style="background-image:url('https://picsum.photos/id/1024/800/600')"></div>
+        <div class="tile" style="background-image:url('https://picsum.photos/id/1035/800/600')"></div>
+        <div class="tile" style="background-image:url('https://picsum.photos/id/1043/800/600')"></div>
+        <div class="tile" style="background-image:url('https://picsum.photos/id/1050/800/600')"></div>
       </div>
-      <div class="hero-content">
-        <h1>Welcome Photophiles</h1>
-        <p>Dive into a world where every frame tells a story. Whether you're a nature enthusiast, a portrait lover, or a street photography fan, you're in the right place.</p>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Services Section -->
-    <section id="service" class="services">
-      <h2>My Photography Services</h2>
-      <div class="service-grid">
-        <div class="service-card">
-          <img src="https://picsum.photos/id/1011/400/300" alt="Nature Photography">
-          <h3>Nature Photography</h3>
-          <p>Capturing the untouched beauty of the world around us — from vast landscapes to intricate details of flora and fauna.</p>
-        </div>
-        <div class="service-card">
-          <img src="https://picsum.photos/id/1027/400/300" alt="Portrait Photography">
-          <h3>Portrait Photography</h3>
-          <p>Bringing out the personality and emotions of people in every frame, for memories that last a lifetime.</p>
-        </div>
-        <div class="service-card">
-          <img src="https://picsum.photos/id/1038/400/300" alt="Street Photography">
-          <h3>Street Photography</h3>
-          <p>Documenting candid moments, culture, and the heartbeat of cities with an artistic perspective.</p>
-        </div>
+  <!-- Services -->
+  <section id="service" class="services">
+    <h2><i class="fas fa-briefcase"></i> My Photography Services</h2>
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="https://picsum.photos/id/1011/400/300" alt="Nature Photography">
+        <h3><i class="fas fa-leaf"></i> Nature Photography</h3>
+        <p>Capturing the untouched beauty of the world around us — from vast landscapes to intricate details of flora and fauna.</p>
       </div>
-    </section>
+      <div class="service-card">
+        <img src="https://picsum.photos/id/1027/400/300" alt="Portrait Photography">
+        <h3><i class="fas fa-user"></i> Portrait Photography</h3>
+        <p>Bringing out the personality and emotions of people in every frame, for memories that last a lifetime.</p>
+      </div>
+      <div class="service-card">
+        <img src="https://picsum.photos/id/1038/400/300" alt="Street Photography">
+        <h3><i class="fas fa-city"></i> Street Photography</h3>
+        <p>Documenting candid moments, culture, and the heartbeat of cities with an artistic perspective.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-      <h2>Contact Me</h2>
-      <p>If you’d like to work together or have any questions, feel free to reach out.</p>
-      <div class="contact-info">
-        <p><strong>Email:</strong> <a href="mailto:tksriramphotography@example.com">tksriramphotography@example.com</a></p>
-        <p><strong>Phone:</strong> +91 98765 43210</p>
-        <p><strong>Instagram:</strong> <a href="https://instagram.com/tksriramphotography" target="_blank">@tksriramphotography</a></p>
-      </div>
-      <form class="contact-form">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-      </form>
-    </section>
-  </div>
+  <!-- Contact -->
+  <section id="contact" class="contact-section">
+    <h2><i class="fas fa-envelope"></i> Contact Me</h2>
+    <p>If you’d like to work together or have any questions, feel free to reach out.</p>
+    <div class="contact-info">
+      <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:tksriramphotography@example.com">tksriramphotography@example.com</a></p>
+      <p><i class="fas fa-phone"></i> <strong>Phone:</strong> +91 98765 43210</p>
+      <p><i class="fab fa-instagram"></i> <strong>Instagram:</strong> <a href="https://instagram.com/tksriramphotography" target="_blank">@tksriramphotography</a></p>
+    </div>
+    <form class="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+    </form>
+  </section>
+
+<script>
+let lastScroll = 0;
+const navbar = document.getElementById('navbar');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll > lastScroll) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+  lastScroll = currentScroll;
+});
+</script>
 </body>
-
 </html>
