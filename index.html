@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>T.K.SRIRAM Photography</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
 <body class="bg-black text-white font-sans">
 
   <!-- Navbar -->
@@ -45,14 +55,35 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="h-screen flex items-center justify-center text-center bg-black px-6">
-    <div>
-      <h1 class="text-3xl md:text-6xl font-bold mb-4"><i class="fas fa-camera"></i> Welcome Photophiles</h1>
+  <section class="h-screen relative flex items-center justify-center text-center px-6">
+    <!-- Background Grid -->
+    <div class="absolute inset-0 grid grid-cols-3 grid-rows-3">
+      <div class="bg-[url('https://picsum.photos/400?random=1')] bg-cover bg-center"></div>
+      <div class="bg-[url('https://picsum.photos/400?random=2')] bg-cover bg-center"></div>
+      <div class="bg-[url('https://picsum.photos/400?random=3')] bg-cover bg-center"></div>
+      <div class="bg-[url('https://picsum.photos/400?random=4')] bg-cover bg-center"></div>
+      <div class="bg-[url('https://picsum.photos/400?random=5')] bg-cover bg-center"></div>
+      <div class="bg-[url('https://picsum.photos/400?random=6')] bg-cover bg-center"></div>
+      <div class="bg-[url('https://picsum.photos/400?random=7')] bg-cover bg-center"></div>
+      <div class="bg-[url('https://picsum.photos/400?random=8')] bg-cover bg-center"></div>
+      <div class="bg-[url('https://picsum.photos/400?random=9')] bg-cover bg-center"></div>
+    </div>
+
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black/70"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 text-white">
+      <h1 class="text-3xl md:text-6xl font-bold mb-4">
+        <i class="fas fa-camera"></i> Welcome Photophiles
+      </h1>
       <p class="text-base md:text-xl text-gray-300 max-w-2xl mx-auto">
         Dive into a world where every frame tells a story. From breathtaking landscapes to intimate portraits, I capture emotions in their purest form.
       </p>
     </div>
   </section>
+
 
   <!-- Contact Section -->
   <footer id="contact" class="bg-black border-t border-gray-800 py-12 px-6">
@@ -76,4 +107,15 @@
     </div>
   </footer>
 
+  <script>
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  </script>
+
 </body>
+
+</html>
