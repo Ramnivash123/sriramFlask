@@ -27,7 +27,7 @@
       <!-- Desktop Links -->
       <ul class="hidden md:flex space-x-6">
         <li><a href="/" class="hover:text-gray-400 transition"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="#service" class="hover:text-gray-400 transition"><i class="fas fa-briefcase"></i> Services</a></li>
+        <li><a href="/service" class="hover:text-gray-400 transition"><i class="fas fa-briefcase"></i> Services</a></li>
       </ul>
 
       <!-- Desktop Buttons -->
@@ -86,6 +86,62 @@
       </div>
     </div>
   </section>
+
+  <!-- Services Section -->
+  <section id="service" class="py-16 px-6 bg-black border-t border-gray-800">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">Our Services</h2>
+      <p class="text-gray-400 text-sm sm:text-base md:text-lg mb-12">
+        From concept to creation, we offer professional photography services tailored to your needs.
+      </p>
+
+      <!-- Service Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+  
+        <!-- Service 1 -->
+        <div class="service-card opacity-0 translate-y-8 bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-300">
+          <img src="static/images.jpeg" alt="Wedding Photography" class="w-full h-56 object-cover">
+          <div class="p-6">
+            <h3 class="text-lg md:text-xl font-semibold mb-2">Wedding Photography</h3>
+            <p class="text-gray-400 text-sm md:text-base">
+              Capturing timeless memories from your special day with elegance and creativity.
+            </p>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card opacity-0 translate-y-8 bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-300">
+          <img src="static/images (1).jpeg" alt="Portrait Photography" class="w-full h-56 object-cover">
+          <div class="p-6">
+            <h3 class="text-lg md:text-xl font-semibold mb-2">Portrait Photography</h3>
+            <p class="text-gray-400 text-sm md:text-base">
+              Personalized portrait sessions that highlight your personality and style.
+            </p>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card opacity-0 translate-y-8 bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-300">
+          <img src="static/images (2).jpeg" alt="Landscape Photography" class="w-full h-56 object-cover">
+          <div class="p-6">
+            <h3 class="text-lg md:text-xl font-semibold mb-2">Landscape Photography</h3>
+            <p class="text-gray-400 text-sm md:text-base">
+              Stunning landscapes that bring nature’s beauty to life through every frame.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12">
+        <a href="/service" 
+          class="px-6 py-3 border border-white rounded-xl hover:bg-white hover:text-black transition text-sm sm:text-base md:text-lg inline-block">
+          Read More →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
 
   <!-- Contact Section -->
   <footer id="contact" class="bg-black border-t border-gray-800 py-12 px-6">
@@ -157,8 +213,25 @@
       scrollContainer.scrollTop = 0;
       smoothScroll();
     });
+
+    const serviceCards = document.querySelectorAll(".service-card");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("opacity-0", "translate-y-8");
+            entry.target.classList.add("opacity-100", "translate-y-0", "transition-all", "duration-700", "ease-out");
+            observer.unobserve(entry.target); // animate only once
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    serviceCards.forEach((card) => observer.observe(card));
   </script>
 
-
 </body>
+
 </html>
