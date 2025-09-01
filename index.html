@@ -70,15 +70,15 @@
 
       <!-- Right Grid Images -->
       <div class="relative z-10 grid grid-cols-3 grid-rows-3 gap-2 w-auto">
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md transition-transform duration-300 transform hover:-translate-x-4" style="background-image: url('https://picsum.photos/150?random=1');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md transition-transform duration-300 transform hover:-translate-x-4" style="background-image: url('https://picsum.photos/150?random=2');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md transition-transform duration-300 transform hover:-translate-x-4" style="background-image: url('https://picsum.photos/150?random=3');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md transition-transform duration-300 transform hover:-translate-x-4" style="background-image: url('https://picsum.photos/150?random=4');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md transition-transform duration-300 transform hover:-translate-x-4" style="background-image: url('https://picsum.photos/150?random=5');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md transition-transform duration-300 transform hover:-translate-x-4" style="background-image: url('https://picsum.photos/150?random=6');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md transition-transform duration-300 transform hover:-translate-x-4" style="background-image: url('https://picsum.photos/150?random=7');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md transition-transform duration-300 transform hover:-translate-x-4" style="background-image: url('https://picsum.photos/150?random=8');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md transition-transform duration-300 transform hover:-translate-x-4" style="background-image: url('https://picsum.photos/150?random=9');"></div>
+        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=1');"></div>
+        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=2');"></div>
+        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=3');"></div>
+        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=4');"></div>
+        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=5');"></div>
+        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=6');"></div>
+        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=7');"></div>
+        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=8');"></div>
+        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=9');"></div>
       </div>
     </div>
   </section>
@@ -114,6 +114,46 @@
     menuBtn.addEventListener("click", () => {
       mobileMenu.classList.toggle("hidden");
     });
+
+    // Select grid
+    const grid = document.querySelector(".grid");
+    let columns = [[], [], []];
+
+    function setupColumns() {
+      columns = [[], [], []]; // reset
+      const items = grid.querySelectorAll("div");
+
+      // ✅ Always distribute into 3 logical columns (desktop + mobile)
+      items.forEach((img, index) => {
+        columns[index % 3].push(img);
+      });
+    }
+
+    setupColumns();
+    window.addEventListener("resize", setupColumns);
+
+    // Animation settings
+    let offset = [0, 0, 0]; 
+    let speed = [0.3, -0.3, 0.3]; // col1 up, col2 down, col3 up
+    const limit = 50; // px before reversing
+
+    function animateScroll() {
+      columns.forEach((col, colIndex) => {
+        offset[colIndex] += speed[colIndex];
+
+        col.forEach((img) => {
+          img.style.transform = `translateY(${offset[colIndex]}px)`;
+        });
+
+        if (Math.abs(offset[colIndex]) >= limit) {
+          speed[colIndex] *= -1; // reverse direction
+        }
+      });
+
+      requestAnimationFrame(animateScroll);
+    }
+
+    animateScroll();
   </script>
 
 </body>
