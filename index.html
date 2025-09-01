@@ -12,10 +12,10 @@
 
   <!-- Navbar -->
   <nav class="bg-black border-b border-gray-700 fixed top-0 left-0 w-full z-50">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 py-4">
       
       <!-- Logo -->
-      <a href="/" class="text-lg md:text-xl font-bold flex items-center gap-2 hover:text-gray-300 transition">
+      <a class="text-base sm:text-lg md:text-xl font-bold flex items-center gap-2 hover:text-gray-300 transition">
         <i class="fas fa-camera-retro"></i> T.K.SRIRAM PHOTOGRAPHY
       </a>
       
@@ -27,10 +27,10 @@
 
       <!-- Desktop Buttons -->
       <div class="hidden md:flex gap-3">
-        <a href="/signup" class="px-4 py-2 border border-white rounded-xl hover:bg-white hover:text-black transition">
+        <a href="/signup" class="px-3 py-2 border border-white rounded-xl hover:bg-white hover:text-black transition text-sm md:text-base">
           <i class="fas fa-user-plus"></i> Sign Up
         </a>
-        <a href="/signin" class="px-4 py-2 border border-white rounded-xl hover:bg-white hover:text-black transition">
+        <a href="/signin" class="px-3 py-2 border border-white rounded-xl hover:bg-white hover:text-black transition text-sm md:text-base">
           <i class="fas fa-sign-in-alt"></i> Sign In
         </a>
       </div>
@@ -55,43 +55,40 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="h-screen relative flex items-center justify-center px-4 md:px-6">
-    <div class="max-w-7xl mx-auto flex flex-row items-start gap-4 md:gap-8 w-full overflow-x-auto">
+  <section class="h-auto md:h-screen relative flex items-center justify-center px-4 md:px-6 pt-28 md:pt-0">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-12 w-full">
       
       <!-- Left Text Content -->
-      <div class="relative z-10 text-white w-1/2 min-w-[200px] text-left">
-        <h1 class="text-2xl md:text-6xl font-bold mb-4">
+      <div class="relative z-10 text-white w-full md:w-1/2 text-center md:text-left">
+        <h1 class="text-2xl sm:text-3xl md:text-6xl font-bold mb-4">
           <i class="fas fa-camera"></i> Welcome Photophiles
         </h1>
-        <p class="text-sm md:text-xl text-gray-300 max-w-xs md:max-w-xl">
+        <p class="text-sm sm:text-base md:text-xl text-gray-300 max-w-lg mx-auto md:mx-0">
           Dive into a world where every frame tells a story. From breathtaking landscapes to intimate portraits, I capture emotions in their purest form.
         </p>
       </div>
 
       <!-- Right Grid Images -->
-      <div class="relative z-10 grid grid-cols-3 grid-rows-3 gap-2 w-auto">
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=1');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=2');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=3');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=4');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=5');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=6');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=7');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=8');"></div>
-        <div class="h-20 md:h-24 w-20 md:w-24 bg-cover bg-center rounded-md" style="background-image: url('https://picsum.photos/150?random=9');"></div>
+      <div id="scroll-container" class="relative z-10 h-72 sm:h-80 md:h-80 w-full overflow-hidden flex justify-center">
+        <div id="scroll-content" class="grid grid-cols-2 gap-2">
+          <div class="h-32 w-32 bg-cover bg-center rounded-md" style="background-image: url('static/images.jpeg');"></div>
+          <div class="h-32 w-32 bg-cover bg-center rounded-md" style="background-image: url('static/images (1).jpeg');"></div>
+          <div class="h-32 w-32 bg-cover bg-center rounded-md" style="background-image: url('static/images (2).jpeg');"></div>
+          <div class="h-32 w-32 bg-cover bg-center rounded-md" style="background-image: url('static/images (3).jpeg');"></div>
+          <div class="h-32 w-32 bg-cover bg-center rounded-md" style="background-image: url('static/images (4).jpeg');"></div>
+          <div class="h-32 w-32 bg-cover bg-center rounded-md" style="background-image: url('static/images (5).jpeg');"></div>
+        </div>
       </div>
     </div>
   </section>
 
-
-
   <!-- Contact Section -->
   <footer id="contact" class="bg-black border-t border-gray-800 py-12 px-6">
     <div class="max-w-7xl mx-auto text-center space-y-6">
-      <h2 class="text-xl md:text-2xl font-bold">Get in Touch</h2>
+      <h2 class="text-lg sm:text-xl md:text-2xl font-bold">Get in Touch</h2>
       <p class="text-gray-400 text-sm md:text-base">Let’s connect and create something beautiful together.</p>
       
-      <div class="flex flex-col md:flex-row justify-center gap-6 md:gap-8 text-base md:text-lg">
+      <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-8 text-sm sm:text-base md:text-lg">
         <a href="mailto:contact@tksriramphoto.com" class="hover:text-gray-300 transition flex items-center gap-2 justify-center">
           <i class="fas fa-envelope"></i> contact@tksriramphoto.com
         </a>
@@ -107,55 +104,56 @@
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script>
+    // Mobile menu toggle
     const menuBtn = document.getElementById("menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
-
     menuBtn.addEventListener("click", () => {
       mobileMenu.classList.toggle("hidden");
     });
 
-    // Select grid
-    const grid = document.querySelector(".grid");
-    let columns = [[], [], []];
+    // Auto scroll effect for grid
+    const scrollContainer = document.getElementById("scroll-container");
+    let direction = 1; // 1 = down, -1 = up
+    const duration = 3000; // 3 seconds
 
-    function setupColumns() {
-      columns = [[], [], []]; // reset
-      const items = grid.querySelectorAll("div");
+    function smoothScroll() {
+      const maxScroll = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+      if (maxScroll <= 0) return; // nothing to scroll, skip
 
-      // ✅ Always distribute into 3 logical columns (desktop + mobile)
-      items.forEach((img, index) => {
-        columns[index % 3].push(img);
-      });
-    }
+      const start = scrollContainer.scrollTop;
+      const end = direction === 1 ? maxScroll : 0;
+      const startTime = performance.now();
 
-    setupColumns();
-    window.addEventListener("resize", setupColumns);
+      function animate(time) {
+        let elapsed = time - startTime;
+        let progress = Math.min(elapsed / duration, 1);
 
-    // Animation settings
-    let offset = [0, 0, 0]; 
-    let speed = [0.3, -0.3, 0.3]; // col1 up, col2 down, col3 up
-    const limit = 50; // px before reversing
+        scrollContainer.scrollTop = start + (end - start) * progress;
 
-    function animateScroll() {
-      columns.forEach((col, colIndex) => {
-        offset[colIndex] += speed[colIndex];
-
-        col.forEach((img) => {
-          img.style.transform = `translateY(${offset[colIndex]}px)`;
-        });
-
-        if (Math.abs(offset[colIndex]) >= limit) {
-          speed[colIndex] *= -1; // reverse direction
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          direction *= -1;
+          setTimeout(smoothScroll, 200); // slight pause
         }
-      });
+      }
 
-      requestAnimationFrame(animateScroll);
+      requestAnimationFrame(animate);
     }
 
-    animateScroll();
+    // Run on load
+    smoothScroll();
+
+    // Re-run on resize (to recalc scrollHeight/clientHeight)
+    window.addEventListener("resize", () => {
+      direction = 1; // reset to downward scroll
+      scrollContainer.scrollTop = 0;
+      smoothScroll();
+    });
   </script>
 
-</body>
 
+</body>
 </html>
