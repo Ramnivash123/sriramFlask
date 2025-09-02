@@ -6,11 +6,6 @@
   <title>T.K.SRIRAM Photography</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">  <style>
-    .font-cursive {
-      font-family: 'Satisfy', cursive;
-    }
-  </style>
 </head>
 
 <body class="bg-black text-white font-sans">
@@ -20,36 +15,18 @@
     <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 py-4">
       
       <!-- Logo -->
-      
-      <a class="flex items-left font-cursive text-2xl">T.K.SRIRAM PHOTOGRAPHY</a>
-      
-      
-      <!-- Desktop Links -->
-      <ul class="hidden md:flex space-x-6">
-        <li><a href="/" class="hover:text-gray-400 transition"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="/service" class="hover:text-gray-400 transition"><i class="fas fa-briefcase"></i> Services</a></li>
-      </ul>
+      <i class="fas fa-camera"> T.K.SRIRAM PHOTOGRAPHY</i>
 
-      <!-- Desktop Buttons -->
-      <div class="hidden md:flex gap-3">
-        <a href="/signup" class="px-3 py-2 border border-white rounded-xl hover:bg-white hover:text-black transition text-sm md:text-base">
-          <i class="fas fa-user-plus"></i> Sign Up
-        </a>
-        <a href="/signin" class="px-3 py-2 border border-white rounded-xl hover:bg-white hover:text-black transition text-sm md:text-base">
-          <i class="fas fa-sign-in-alt"></i> Sign In
-        </a>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <button id="menu-btn" class="md:hidden text-2xl focus:outline-none">
+      <!-- Menu Button (always visible) -->
+      <button id="menu-btn" class="text-2xl focus:outline-none">
         <i class="fas fa-bars"></i>
       </button>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-gray-700 px-6 py-4 space-y-4">
+    <!-- Collapsible Menu (same for desktop & mobile) -->
+    <div id="mobile-menu" class="hidden bg-black border-t border-gray-700 px-6 py-4 space-y-4">
       <a href="/" class="block hover:text-gray-400"><i class="fas fa-home"></i> Home</a>
-      <a href="#service" class="block hover:text-gray-400"><i class="fas fa-briefcase"></i> Services</a>
+      <a href="/service" class="block hover:text-gray-400"><i class="fas fa-briefcase"></i> Services</a>
       <a href="/signup" class="block px-4 py-2 border border-white rounded-xl hover:bg-white hover:text-black transition">
         <i class="fas fa-user-plus"></i> Sign Up
       </a>
@@ -58,6 +35,7 @@
       </a>
     </div>
   </nav>
+
 
   <!-- Hero Section -->
   <section class="h-auto md:h-screen relative flex items-center justify-center px-4 md:px-6 pt-28 md:pt-0">
@@ -96,10 +74,9 @@
       </p>
 
       <!-- Service Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-  
+      <div id="service-scroll" class="flex gap-8 overflow-x-hidden scroll-smooth">
         <!-- Service 1 -->
-        <div class="service-card opacity-0 translate-y-8 bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-300">
+        <div class="service-card opacity-0 translate-y-8 min-w-[300px] bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-300">
           <img src="static/images.jpeg" alt="Wedding Photography" class="w-full h-56 object-cover">
           <div class="p-6">
             <h3 class="text-lg md:text-xl font-semibold mb-2">Wedding Photography</h3>
@@ -110,7 +87,7 @@
         </div>
 
         <!-- Service 2 -->
-        <div class="service-card opacity-0 translate-y-8 bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-300">
+        <div class="service-card opacity-0 translate-y-8 min-w-[300px] bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-300">
           <img src="static/images (1).jpeg" alt="Portrait Photography" class="w-full h-56 object-cover">
           <div class="p-6">
             <h3 class="text-lg md:text-xl font-semibold mb-2">Portrait Photography</h3>
@@ -121,7 +98,7 @@
         </div>
 
         <!-- Service 3 -->
-        <div class="service-card opacity-0 translate-y-8 bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-300">
+        <div class="service-card opacity-0 translate-y-8 min-w-[300px] bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-300">
           <img src="static/images (2).jpeg" alt="Landscape Photography" class="w-full h-56 object-cover">
           <div class="p-6">
             <h3 class="text-lg md:text-xl font-semibold mb-2">Landscape Photography</h3>
@@ -214,15 +191,38 @@
       smoothScroll();
     });
 
-    const serviceCards = document.querySelectorAll(".service-card");
+    const serviceScroll = document.getElementById("service-scroll");
 
+    // Duplicate content for seamless effect
+    serviceScroll.innerHTML += serviceScroll.innerHTML;
+
+    let scrollSpeed = 1; // adjust speed
+    function autoScrollServices() {
+      serviceScroll.scrollLeft += scrollSpeed;
+
+      // Reset when first half has fully scrolled
+      if (serviceScroll.scrollLeft >= serviceScroll.scrollWidth / 2) {
+        serviceScroll.scrollLeft = 0;
+      }
+    }
+
+    let serviceInterval = setInterval(autoScrollServices, 20);
+
+    // Pause on hover
+    serviceScroll.addEventListener("mouseenter", () => clearInterval(serviceInterval));
+    serviceScroll.addEventListener("mouseleave", () => {
+      serviceInterval = setInterval(autoScrollServices, 20);
+    });
+
+    // Fade-in effect (unchanged)
+    const serviceCards = document.querySelectorAll(".service-card");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.remove("opacity-0", "translate-y-8");
             entry.target.classList.add("opacity-100", "translate-y-0", "transition-all", "duration-700", "ease-out");
-            observer.unobserve(entry.target); // animate only once
+            observer.unobserve(entry.target);
           }
         });
       },
