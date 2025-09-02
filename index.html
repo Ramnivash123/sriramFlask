@@ -15,26 +15,28 @@
     <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 py-4">
       
       <!-- Logo -->
-      <i class="fas fa-camera"> T.K.SRIRAM PHOTOGRAPHY</i>
+      <div class="text-lg md:text-xl font-bold flex items-center gap-2">
+        <i class="fas fa-camera"></i> T.K.SRIRAM PHOTOGRAPHY
+      </div>
 
-      <!-- Menu Button (always visible) -->
-      <button id="menu-btn" class="text-2xl focus:outline-none">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-
-    <!-- Collapsible Menu (same for desktop & mobile) -->
-    <div id="mobile-menu" class="hidden bg-black border-t border-gray-700 px-6 py-4 space-y-4">
-      <a href="/" class="block hover:text-gray-400"><i class="fas fa-home"></i> Home</a>
-      <a href="/service" class="block hover:text-gray-400"><i class="fas fa-briefcase"></i> Services</a>
-      <a href="/signup" class="block px-4 py-2 border border-white rounded-xl hover:bg-white hover:text-black transition">
-        <i class="fas fa-user-plus"></i> Sign Up
-      </a>
-      <a href="/signin" class="block px-4 py-2 border border-white rounded-xl hover:bg-white hover:text-black transition">
-        <i class="fas fa-sign-in-alt"></i> Sign In
-      </a>
+      <!-- Menu (always visible at top) -->
+      <div class="flex items-center gap-6 text-sm sm:text-base">
+        <a href="/" class="hover:text-gray-400 flex items-center gap-1">
+          <i class="fas fa-home"></i> Home
+        </a>
+        <a href="/service" class="hover:text-gray-400 flex items-center gap-1">
+          <i class="fas fa-briefcase"></i> Services
+        </a>
+        <a href="/signup" class="px-3 py-1 border border-white rounded-xl hover:bg-white hover:text-black transition flex items-center gap-1">
+          <i class="fas fa-user-plus"></i> Sign Up
+        </a>
+        <a href="/signin" class="px-3 py-1 border border-white rounded-xl hover:bg-white hover:text-black transition flex items-center gap-1">
+          <i class="fas fa-sign-in-alt"></i> Sign In
+        </a>
+      </div>
     </div>
   </nav>
+
 
 
   <!-- Hero Section -->
@@ -73,10 +75,10 @@
         From concept to creation, we offer professional photography services tailored to your needs.
       </p>
 
-      <!-- Service Grid -->
-      <div id="service-scroll" class="flex gap-8 overflow-x-hidden scroll-smooth">
+      <!-- Service Grid (Static) -->
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         <!-- Service 1 -->
-        <div class="service-card opacity-0 translate-y-8 min-w-[300px] bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-300">
+        <div class="service-card bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-300">
           <img src="static/images.jpeg" alt="Wedding Photography" class="w-full h-56 object-cover">
           <div class="p-6">
             <h3 class="text-lg md:text-xl font-semibold mb-2">Wedding Photography</h3>
@@ -87,7 +89,7 @@
         </div>
 
         <!-- Service 2 -->
-        <div class="service-card opacity-0 translate-y-8 min-w-[300px] bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-300">
+        <div class="service-card bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-300">
           <img src="static/images (1).jpeg" alt="Portrait Photography" class="w-full h-56 object-cover">
           <div class="p-6">
             <h3 class="text-lg md:text-xl font-semibold mb-2">Portrait Photography</h3>
@@ -98,7 +100,7 @@
         </div>
 
         <!-- Service 3 -->
-        <div class="service-card opacity-0 translate-y-8 min-w-[300px] bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-300">
+        <div class="service-card bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition transform duration-300">
           <img src="static/images (2).jpeg" alt="Landscape Photography" class="w-full h-56 object-cover">
           <div class="p-6">
             <h3 class="text-lg md:text-xl font-semibold mb-2">Landscape Photography</h3>
@@ -118,6 +120,7 @@
 
     </div>
   </section>
+
 
 
   <!-- Contact Section -->
@@ -142,95 +145,6 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script>
-    // Mobile menu toggle
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-
-    // Auto scroll effect for grid
-    const scrollContainer = document.getElementById("scroll-container");
-    let direction = 1; // 1 = down, -1 = up
-    const duration = 3000; // 3 seconds
-
-    function smoothScroll() {
-      const maxScroll = scrollContainer.scrollHeight - scrollContainer.clientHeight;
-      if (maxScroll <= 0) return; // nothing to scroll, skip
-
-      const start = scrollContainer.scrollTop;
-      const end = direction === 1 ? maxScroll : 0;
-      const startTime = performance.now();
-
-      function animate(time) {
-        let elapsed = time - startTime;
-        let progress = Math.min(elapsed / duration, 1);
-
-        scrollContainer.scrollTop = start + (end - start) * progress;
-
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          direction *= -1;
-          setTimeout(smoothScroll, 200); // slight pause
-        }
-      }
-
-      requestAnimationFrame(animate);
-    }
-
-    // Run on load
-    smoothScroll();
-
-    // Re-run on resize (to recalc scrollHeight/clientHeight)
-    window.addEventListener("resize", () => {
-      direction = 1; // reset to downward scroll
-      scrollContainer.scrollTop = 0;
-      smoothScroll();
-    });
-
-    const serviceScroll = document.getElementById("service-scroll");
-
-    // Duplicate content for seamless effect
-    serviceScroll.innerHTML += serviceScroll.innerHTML;
-
-    let scrollSpeed = 1; // adjust speed
-    function autoScrollServices() {
-      serviceScroll.scrollLeft += scrollSpeed;
-
-      // Reset when first half has fully scrolled
-      if (serviceScroll.scrollLeft >= serviceScroll.scrollWidth / 2) {
-        serviceScroll.scrollLeft = 0;
-      }
-    }
-
-    let serviceInterval = setInterval(autoScrollServices, 20);
-
-    // Pause on hover
-    serviceScroll.addEventListener("mouseenter", () => clearInterval(serviceInterval));
-    serviceScroll.addEventListener("mouseleave", () => {
-      serviceInterval = setInterval(autoScrollServices, 20);
-    });
-
-    // Fade-in effect (unchanged)
-    const serviceCards = document.querySelectorAll(".service-card");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.remove("opacity-0", "translate-y-8");
-            entry.target.classList.add("opacity-100", "translate-y-0", "transition-all", "duration-700", "ease-out");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    serviceCards.forEach((card) => observer.observe(card));
-  </script>
 
 </body>
 
